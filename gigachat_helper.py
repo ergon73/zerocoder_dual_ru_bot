@@ -36,14 +36,33 @@ except Exception as e:
 def get_giga_response(user_prompt: str) -> str:
     """
     Отправляет запрос к GigaChat и возвращает ответ.
+    В случае ошибки возвращает сообщение об ошибке.
     """
     try:
-        logger.debug(f"Отправка запроса к GigaChat")
-        # Формируем структуру сообщения для API
+        credentials = os.getenv("GIGACHAT_CREDENTIALS")
+        cert_path = os.getenv("GIGACHAT_CERT_PATH", "russian_trusted_root_ca.cer")
+
+        if not credentials:
+            logger.error("Не найдены учетные данные GigaChat в переменных окружения")
+            return "Не удалось получить ответ от GigaChat: отсутствуют учетные данные"
+
+        # Проверяем наличие сертификата
+        if not os.path.exists(cert_path):
+            logger.warning(f"Сертификат {cert_path} не найден")
+            cert_path = None
+        
+        # Создаем клиент GigaChat
+        giga = GigaChat(
+            credentials=credentials,
+            verify_ssl_certs=False,  # Отключаем проверку SSL для тестов
+            ca_bundle=cert_path
+        )
+        
+        # Создаем структуру сообщения для API
         messages = [
             Messages(
                 role=MessagesRole.SYSTEM,
-                content="Ты — умный ассистент."
+                content="Ты — полезный ассистент."
             ),
             Messages(
                 role=MessagesRole.USER,
@@ -51,13 +70,11 @@ def get_giga_response(user_prompt: str) -> str:
             )
         ]
         
-        # Отправляем запрос и получаем ответ
-        response = giga.chat(Chat(messages=messages, temperature=0.7))
-        logger.debug("Успешно получен ответ от GigaChat")
+        # Отправляем запрос
+        response = giga.chat(Chat(messages=messages))
         
-        # Возвращаем текст ответа
         return response.choices[0].message.content
 
     except Exception as e:
         logger.error(f"Ошибка при работе с GigaChat: {str(e)}")
-        return "К сожалению, не удалось получить ответ от GigaChat. Попробуйте позже."
+        return "Не удалось получить ответ от GigaChat. Попробуйте позже."

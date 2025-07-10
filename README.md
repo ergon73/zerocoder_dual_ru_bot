@@ -34,7 +34,7 @@ TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 
 # GigaChat credentials (получить в личном кабинете https://developers.sber.ru/portal/products/gigachat)
 GIGACHAT_CREDENTIALS=your_gigachat_credentials
-GIGACHAT_CERT_PATH=russian_trusted_root_ca.cer
+GIGACHAT_CERT_PATH=russian_trusted_root_ca.cer  # Путь к сертификату (по умолчанию в корневой папке)
 
 # YandexGPT credentials (получить в консоли Yandex Cloud)
 YANDEX_FOLDER_ID=your_yandex_folder_id
@@ -50,7 +50,10 @@ YANDEX_API_KEY=your_yandex_api_key
 ### GigaChat
 1. Зарегистрируйтесь на [портале разработчиков Сбера](https://developers.sber.ru/portal/products/gigachat)
 2. Получите credentials для доступа к API
-3. Скачайте сертификат `russian_trusted_root_ca.cer`
+3. Скачайте сертификат `russian_trusted_root_ca.cer` и поместите его в корневую папку проекта
+   - Сертификат необходим для SSL-подключения к API GigaChat
+   - По умолчанию код ищет файл `russian_trusted_root_ca.cer` в корневой папке
+   - Вы можете указать другой путь через переменную `GIGACHAT_CERT_PATH` в `.env`
 
 ### YandexGPT
 1. Создайте проект в [консоли Yandex Cloud](https://console.cloud.yandex.ru/)
@@ -77,10 +80,30 @@ python dual_ru_bot.py
 - Токен Telegram бота
 - Доступ к API GigaChat
 - Доступ к API YandexGPT
+- Сертификат SSL для GigaChat
 
 ## Логирование
 
 Бот ведет подробный лог в файл `bot.log`. Это помогает в отладке и диагностике проблем.
+
+## Тестирование
+
+Проект использует pytest для модульного тестирования. Тесты находятся в директории `tests/`.
+
+Для запуска тестов:
+```bash
+# Установка зависимостей для тестирования
+pip install -r requirements.txt
+
+# Запуск всех тестов
+pytest
+
+# Запуск тестов с подробным выводом
+pytest -v
+
+# Запуск конкретного теста
+pytest tests/test_yandex_helper.py
+```
 
 ## Контакты
 
