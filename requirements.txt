@@ -1,0 +1,5 @@
+pyTelegramBotAPI
+gigachat
+yandex-cloud-ml-sdk
+python-dotenv
+requests
