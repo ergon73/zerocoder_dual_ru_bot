@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  telegram-bot:
+    image: ergon73/dual-ru-bot:latest
+    container_name: dual-ru-bot
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - GIGACHAT_CREDENTIALS=${GIGACHAT_CREDENTIALS}
+      - GIGACHAT_CERT_PATH=${GIGACHAT_CERT_PATH}
+      - YANDEX_FOLDER_ID=${YANDEX_FOLDER_ID}
+      - YANDEX_API_KEY=${YANDEX_API_KEY}
+    volumes:
+      - ./logs:/app/logs
+      - ./russian_trusted_root_ca.cer:/app/russian_trusted_root_ca.cer:ro
+    networks:
+      - bot-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  bot-network:
+    driver: bridge 

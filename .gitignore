@@ -41,4 +41,8 @@ wheels/
 *.cer
 *.crt
 *.key
-*.pem 
+*.pem
+
+# Docker
+.dockerignore
+docker-compose.override.yml 
