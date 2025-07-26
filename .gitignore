@@ -45,4 +45,10 @@ wheels/
 
 # Docker
 .dockerignore
-docker-compose.override.yml 
+docker-compose.override.yml
+
+# SSH ключи (приватные)
+id_rsa
+id_ed25519
+yc_ergon73_key
+*.key 
