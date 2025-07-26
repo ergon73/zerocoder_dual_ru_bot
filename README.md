@@ -18,7 +18,7 @@ Telegram бот с поддержкой двух русскоязычных LLM 
 
 1. Клонируйте репозиторий:
 ```bash
-git clone https://github.com/ergon73/zerocoder_dual_ru_bot.git
+git clone https://github.com/your_github_username/zerocoder_dual_ru_bot.git
 cd zerocoder_dual_ru_bot
 ```
 
@@ -55,7 +55,7 @@ docker-compose --version
 
 2. Клонируйте репозиторий и перейдите в папку проекта:
 ```bash
-git clone https://github.com/ergon73/zerocoder_dual_ru_bot.git
+git clone https://github.com/your_github_username/zerocoder_dual_ru_bot.git
 cd zerocoder_dual_ru_bot
 ```
 
@@ -125,7 +125,7 @@ version: '3.8'
 
 services:
   telegram-bot:
-    image: ergon73/dual-ru-bot:latest
+    image: your_docker_username/dual-ru-bot:latest
     container_name: dual-ru-bot
     restart: unless-stopped
     environment:
@@ -294,13 +294,13 @@ pytest tests/test_yandex_helper.py
 
 ## Docker Hub
 
-Образ доступен в Docker Hub: `ergon73/dual-ru-bot:latest`
+Образ доступен в Docker Hub: `your_docker_username/dual-ru-bot:latest`
 
 ### Использование образа
 
 ```bash
 # Скачать образ
-docker pull ergon73/dual-ru-bot:latest
+docker pull your_docker_username/dual-ru-bot:latest
 
 # Запустить контейнер
 docker run -d \
@@ -308,12 +308,12 @@ docker run -d \
   --env-file .env \
   -v $(pwd)/logs:/app/logs \
   -v $(pwd)/russian_trusted_root_ca.cer:/app/russian_trusted_root_ca.cer:ro \
-  ergon73/dual-ru-bot:latest
+  your_docker_username/dual-ru-bot:latest
 ```
 
 ## Контакты
 
-По вопросам работы бота обращайтесь: georgy.belyanin@gmail.com
+По вопросам работы бота обращайтесь: your_email@example.com
 
 ## Лицензия
 

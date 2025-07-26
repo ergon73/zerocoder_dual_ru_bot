@@ -1,8 +1,6 @@
-version: '3.8'
-
 services:
   telegram-bot:
-    image: ergon73/dual-ru-bot:latest
+    image: your_docker_username/dual-ru-bot:latest
     container_name: dual-ru-bot
     restart: unless-stopped
     environment:

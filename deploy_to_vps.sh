@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Скрипт для развертывания Telegram бота на VPS
-# IP: 158.160.53.164
+# IP: your_vps_ip
 # Использование: ./deploy_to_vps.sh
 
 set -e
 
-VPS_IP="158.160.53.164"
-VPS_USER="ergon73"
+VPS_IP="your_vps_ip"
+VPS_USER="your_vps_user"
 PROJECT_NAME="dual-ru-bot"
 
 echo "🚀 Начинаем развертывание на VPS ${VPS_IP}..."
@@ -34,7 +34,7 @@ version: '3.8'
 
 services:
   telegram-bot:
-    image: ergon73/dual-ru-bot:latest
+    image: your_docker_username/dual-ru-bot:latest
     container_name: dual-ru-bot
     restart: unless-stopped
     environment:
@@ -89,14 +89,14 @@ cd ${PROJECT_NAME}
 docker-compose -f docker-compose.prod.yml down || true
 
 # Удаляем старый образ
-docker rmi ergon73/dual-ru-bot:latest || true
+docker rmi your_docker_username/dual-ru-bot:latest || true
 
 # Создаем директорию для логов
 mkdir -p logs
 
 # Скачиваем последний образ
 echo "📥 Скачиваем образ из Docker Hub..."
-docker pull ergon73/dual-ru-bot:latest
+docker pull your_docker_username/dual-ru-bot:latest
 
 # Запускаем контейнер
 echo "🚀 Запускаем контейнер..."

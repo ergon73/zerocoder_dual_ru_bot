@@ -1,12 +1,12 @@
 # Быстрое развертывание на VPS
 
-**VPS IP:** 158.160.53.164  
-**Пользователь:** ergon73
+**VPS IP:** your_vps_ip  
+**Пользователь:** your_vps_user
 
 ## Шаг 1: Подключение к VPS
 
 ```bash
-ssh ergon73@158.160.53.164
+ssh your_vps_user@your_vps_ip
 ```
 
 ## Шаг 2: Проверка Docker
@@ -70,7 +70,7 @@ version: '3.8'
 
 services:
   telegram-bot:
-    image: ergon73/dual-ru-bot:latest
+    image: your_docker_username/dual-ru-bot:latest
     container_name: dual-ru-bot
     restart: unless-stopped
     environment:
@@ -99,7 +99,7 @@ networks:
 
 ```bash
 # Скачиваем образ из Docker Hub
-docker pull ergon73/dual-ru-bot:latest
+docker pull your_docker_username/dual-ru-bot:latest
 
 # Создаем директорию для логов
 mkdir -p logs
@@ -153,7 +153,7 @@ docker-compose -f docker-compose.prod.yml restart
 docker-compose -f docker-compose.prod.yml down
 
 # Скачивание нового образа
-docker pull ergon73/dual-ru-bot:latest
+docker pull your_docker_username/dual-ru-bot:latest
 
 # Запуск
 docker-compose -f docker-compose.prod.yml up -d
@@ -213,6 +213,6 @@ docker-compose -f docker-compose.prod.yml logs -f
 
 ## Готово! 🎉
 
-После выполнения всех шагов ваш Telegram бот будет работать на VPS 158.160.53.164.
+После выполнения всех шагов ваш Telegram бот будет работать на VPS your_vps_ip.
 
 **Проверьте бота в Telegram:** отправьте `/start` вашему боту. 

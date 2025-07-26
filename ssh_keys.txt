@@ -1,18 +1,14 @@
-# Публичные SSH ключи для настройки доступа к VPS
-# IP: 158.160.53.164
-# Пользователь: ergon73
+# IP: your_vps_ip
+# Пользователь: your_vps_user
 
-# Основной ключ (id_ed25519)
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID5dxzkOdBG+A77HFdonW+i4Ta3kxV25R+5hEpbWFZDo ergon73
+# Основной ключ (id_ed25519):
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... your_username
 
-# Yandex Cloud ключ (yc_ergon73_key)
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKRRf/vuvjsmEAcHjJfSDJ+VgB2XFjTZUvppLWml43rB ergon73
+# Yandex Cloud ключ (yc_your_username_key)
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... your_username
 
-# Инструкция по настройке:
-# 1. Подключитесь к VPS любым способом (веб-консоль, панель управления)
-# 2. Добавьте один из ключей в ~/.ssh/authorized_keys:
-#    echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID5dxzkOdBG+A77HFdonW+i4Ta3kxV25R+5hEpbWFZDo ergon73" >> ~/.ssh/authorized_keys
-# 3. Установите правильные права:
-#    chmod 600 ~/.ssh/authorized_keys
-#    chmod 700 ~/.ssh
-# 4. Теперь можно подключаться по SSH: ssh ergon73@158.160.53.164 
+# Инструкции:
+# 1. Подключитесь к VPS через веб-консоль
+# 2. Создайте папку .ssh: mkdir -p ~/.ssh
+# 3. Добавьте ключ: echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... your_username" >> ~/.ssh/authorized_keys
+# 4. Теперь можно подключаться по SSH: ssh your_vps_user@your_vps_ip 

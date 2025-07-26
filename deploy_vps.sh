@@ -40,7 +40,7 @@ docker-compose -f docker-compose.prod.yml down || true
 
 # Удаляем старый образ (если есть)
 echo "🗑️ Удаляем старый образ..."
-docker rmi ergon73/dual-ru-bot:latest || true
+docker rmi your_docker_username/dual-ru-bot:latest || true
 
 # Создаем директорию для логов
 echo "📁 Создаем директорию для логов..."
@@ -48,7 +48,7 @@ mkdir -p logs
 
 # Скачиваем последний образ из Docker Hub
 echo "📥 Скачиваем образ из Docker Hub..."
-docker pull ergon73/dual-ru-bot:latest
+docker pull your_docker_username/dual-ru-bot:latest
 
 # Запускаем контейнер
 echo "🚀 Запускаем контейнер..."

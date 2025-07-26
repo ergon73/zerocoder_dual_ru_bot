@@ -57,7 +57,7 @@ sudo systemctl restart docker
 
 ```bash
 # Клонируем репозиторий
-git clone https://github.com/ergon73/zerocoder_dual_ru_bot.git
+git clone https://github.com/your_github_username/zerocoder_dual_ru_bot.git
 cd zerocoder_dual_ru_bot
 ```
 
@@ -355,4 +355,4 @@ cp docker-compose.yml docker-compose.yml.backup
 - Мониториться через алерты и дашборды
 - Безопасно обновляться
 
-Для получения помощи обращайтесь: georgy.belyanin@gmail.com 
+Для получения помощи обращайтесь: your_email@example.com 
